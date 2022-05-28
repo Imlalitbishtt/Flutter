@@ -13,7 +13,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       bottomNavigationBar: Container(
         color: Colors.white,
         child: Padding(
@@ -31,10 +33,10 @@ class HomeDetailPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 100,
+                  width: 120,
                   height: 50,
                   child: ElevatedButton(onPressed: (){},
-                    child: Text("Buy"),
+                    child: Text("Add to cart"),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor),
                       shape: MaterialStateProperty.all(StadiumBorder()),
@@ -67,7 +69,7 @@ class HomeDetailPage extends StatelessWidget {
                     color: Colors.white,
                     width: context.screenWidth,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
+                      padding: const EdgeInsets.symmetric(vertical: 64.0),
                       child: Column(
                         children: [
                         Text(catalog.name,
@@ -81,8 +83,19 @@ class HomeDetailPage extends StatelessWidget {
                           Text(catalog.desc,
                             textScaleFactor: 1.40,
                             style: Theme.of(context).textTheme.caption.merge(TextStyle(
-                              fontWeight: FontWeight.w500
+                             // fontWeight: FontWeight.w500
                             )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              "Lorem ipsum dolor sit amet,inus ex doloribus yu ui tempora nostrum quam enim quis! Corporis xahi expedita autem sit, lorem ipsum dispum distinctio maiores officia late yu laborum sed eum ipsum dicta porro est totam. "
+                                  "lorem ipsum dispum zora tashe quira huiyate liszi adios buenas dias",
+                              style: Theme.of(context).textTheme.caption.merge(TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
                           ),
                         ],
                       ),
