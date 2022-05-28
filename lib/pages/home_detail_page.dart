@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/catalog.dart';
-import 'package:flutter_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -16,8 +15,9 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
+      backgroundColor: Theme.of(context).canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Container(
@@ -28,7 +28,7 @@ class HomeDetailPage extends StatelessWidget {
                 Text("\$${catalog.price.toString()}",
                   textScaleFactor: 2.25,
                   style: TextStyle(
-                    color: Colors.redAccent,
+                    color: Theme.of(context).focusColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -38,7 +38,7 @@ class HomeDetailPage extends StatelessWidget {
                   child: ElevatedButton(onPressed: (){},
                     child: Text("Add to cart"),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor),
+                      backgroundColor: MaterialStateProperty.all(Theme.of(context).focusColor,),
                       shape: MaterialStateProperty.all(StadiumBorder()),
                     ),
                   ),
@@ -48,7 +48,6 @@ class HomeDetailPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: MyTheme.creamColor,
       body: SafeArea(
          bottom: false,
         child: Column(
@@ -66,7 +65,7 @@ class HomeDetailPage extends StatelessWidget {
                   edge: VxEdge.TOP,
                   arcType: VxArcType.CONVEY,
                   child: Container(
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
                     width: context.screenWidth,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 64.0),
@@ -76,7 +75,7 @@ class HomeDetailPage extends StatelessWidget {
                         textScaleFactor: 2.25,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: MyTheme.darkBluishColor,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       // catalog.desc.text.textStyle(context.captionStyle).xl.make(),
@@ -84,6 +83,7 @@ class HomeDetailPage extends StatelessWidget {
                             textScaleFactor: 1.40,
                             style: Theme.of(context).textTheme.caption.merge(TextStyle(
                              // fontWeight: FontWeight.w500
+                              color: Theme.of(context).primaryColor,
                             )),
                           ),
                           Padding(

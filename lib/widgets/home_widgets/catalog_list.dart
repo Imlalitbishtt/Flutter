@@ -1,10 +1,8 @@
 import 'package:flutter_app/pages/home_detail_page.dart';
-
 import 'catalog_image.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_app/models/catalog.dart';
-import 'package:flutter_app/widgets/themes.dart';
 
 
 // *******LIST VIEW********
@@ -61,7 +59,7 @@ class CatalogItem extends StatelessWidget {
                         textScaleFactor: 1.125,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: MyTheme.darkBluishColor,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       //catalog.desc.text.textStyle(context.captionStyle).make(),
@@ -69,6 +67,7 @@ class CatalogItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.caption.merge(TextStyle(
                             //overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w200,
+
                         ))
                       ),
                       SizedBox(
@@ -87,10 +86,13 @@ class CatalogItem extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: ElevatedButton(onPressed: (){},
-                              child: Text("Buy"),
+                              child: Text("Buy Now"),
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor),
-                                shape: MaterialStateProperty.all(StadiumBorder()),
+                                backgroundColor: MaterialStateProperty.all(
+                                  Theme.of(context).focusColor,
+                                ),
+                                shape: MaterialStateProperty.all(
+                                    StadiumBorder()),
                               ),
                             ),
                           )
@@ -100,7 +102,7 @@ class CatalogItem extends StatelessWidget {
                   ))
             ],
           )
-      ).rounded.white.square(150).make(),
+      ).rounded.color(context.cardColor).square(150).make(),
     );
   }
 }

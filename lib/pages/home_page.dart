@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:flutter_app/widgets/themes.dart';
 import 'package:flutter_app/models/catalog.dart';
 
 import '../widgets/home_widgets/catalog_header.dart';
@@ -22,41 +21,42 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
 
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(() {
-      setState(() {});
-    });
-    controller.repeat(reverse: true);
+    // controller = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(seconds: 5),
+    // )..addListener(() {
+    //   setState(() {});
+    // });
+    //controller.repeat(reverse: true);
+
     super.initState();
     loadData();
   }
 
   loadData() async {
-    await (Future.delayed(Duration(seconds: 5)));
+    await Future.delayed(Duration(seconds: 5));
     final catalogJson = await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
     CatalogModel.items = List.from(productsData)
         .map((item)=> Item.fromMap(item))
         .toList();
-    setState(() {
-    });
+    setState( () {} );
   }
 
   @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  //}
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: ()=> Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: Colors.pinkAccent,
-          child: Icon(CupertinoIcons.cart),
+        backgroundColor: Theme.of(context).focusColor,
+          child: Icon(CupertinoIcons.cart,
+          color: Colors.white),
       ),
       body: SafeArea(
         child: Container(
