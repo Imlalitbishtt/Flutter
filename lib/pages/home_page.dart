@@ -56,7 +56,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         onPressed: ()=> Navigator.pushNamed(context, MyRoutes.cartRoute),
         backgroundColor: Theme.of(context).focusColor,
           child: Icon(CupertinoIcons.cart,
-          color: Colors.white),
+          color: Colors.white
+          ),
       ),
       body: SafeArea(
         child: Container(
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               if(CatalogModel.items!=null && CatalogModel.items.isNotEmpty)
                 CatalogList().py16().expand()
               else
-                  CircularProgressIndicator().centered().expand(),
+                  CircularProgressIndicator(color: Theme.of(context).focusColor).centered().expand(),
             ],
           ),
         ),
