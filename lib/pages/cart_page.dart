@@ -74,13 +74,17 @@ class CartPage extends StatelessWidget {
     final _cart = CartModel();
     @override
     Widget build(BuildContext context) {
-      return ListView.builder(
+      return _cart.items.isEmpty? Center(child: Text("Your Cart is Empty", textScaleFactor: 1.8,style: TextStyle(),)):
+      ListView.builder(
           itemCount: _cart.items?.length,
           itemBuilder: (context, index) => ListTile(
             leading: Icon(Icons.done),
             trailing: IconButton(
               icon: Icon(Icons.remove),
-              onPressed: (){},
+              onPressed: (){
+                _cart.remove(_cart.items[index]);
+                setState(() {});
+              },
             ),
             title: Text(_cart.items[index].name),
           ),
