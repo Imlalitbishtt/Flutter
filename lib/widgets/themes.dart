@@ -8,7 +8,7 @@ class MyTheme{
       fontFamily: GoogleFonts.poppins().fontFamily,
           cardColor: Colors.white,
           canvasColor: creamColor,
-          focusColor: Colors.pinkAccent,
+          focusColor: darkBluishColor,
       primaryColor: Colors.black,
       appBarTheme: AppBarTheme(
       color: Colors.white,
