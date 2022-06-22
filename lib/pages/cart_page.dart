@@ -36,11 +36,17 @@ class CartPage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text("\$${_cart.totalPrice}",
-              textScaleFactor: 2.25,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-              ),
+            VxConsumer(
+              notifications: {},
+              mutations: {RemoveMutation},
+              builder: (context, _){
+                return Text("\$${_cart.totalPrice}",
+                  textScaleFactor: 2.25,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                );
+              },
             ),
             SizedBox(
               width: 30,
@@ -69,6 +75,7 @@ class CartPage extends StatelessWidget {
     class _CartList extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
+      VxState.listen(context,to:[RemoveMutation]);
       final CartModel _cart = (VxState.store as MyStore).cart;
       return _cart.items.isEmpty? Center(child: Text("Your Cart is Empty", textScaleFactor: 1.8,style: TextStyle(),)):
       ListView.builder(
@@ -77,10 +84,7 @@ class CartPage extends StatelessWidget {
             leading: Icon(Icons.done),
             trailing: IconButton(
               icon: Icon(Icons.remove),
-              onPressed: (){
-                _cart.remove(_cart.items[index]);
-                //setState(() {});
-              },
+              onPressed: ()=>RemoveMutation(_cart.items[index]),
             ),
             title: Text(_cart.items[index].name),
           ),
